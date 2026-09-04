@@ -1,0 +1,64 @@
+# Built application files
+*.apk
+*.apk.idsig
+*.aab
+*.ap_
+*.aar
+*.dex
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+release/
+**/build/
+.cxx/
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+local.properties
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+captures/
+.navigation/
+.externalNativeBuild/
+
+# Eclipse / ADT
+.classpath
+.project
+.settings/
+proguard/
+
+# Log / temp files
+*.log
+.tmp/
+*~
+*.swp
+
+# Keystores and signing material
+*.jks
+*.keystore
+# *.pk8
+# *.x509.pem
+# signing/**/platform.pk8
+# signing/**/platform.x509.pem
+keystore.properties
+
+# NDK
+obj/
+
+# macOS / Linux desktop cruft
+.DS_Store
+Thumbs.db
+
+# Project output
+dist/*.apk
+dist/*.apk.idsig

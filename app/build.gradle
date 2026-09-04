@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.stacklauncherpoc'
+    compileSdk 28
+    buildToolsVersion '34.0.0'
+
+    defaultConfig {
+        applicationId 'com.example.stacklauncherpoc'
+        minSdk 28
+        targetSdk 28
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        debug {
+            // Intentionally unsigned. A debug certificate would not receive the
+            // signature permissions required by the POC.
+            signingConfig null
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig null
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    // Compile-time-only declarations for @hide framework classes that the public
+    // API-28 android.jar omits (see framework-stubs/ and
+    // scripts/build-framework-stubs.sh). compileOnly keeps them out of the APK;
+    // the real classes are resolved from the device boot image at runtime.
+    compileOnly files('libs/framework-stubs.jar')
+}

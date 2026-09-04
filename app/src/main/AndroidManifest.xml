@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Needed to resolve the launched third-party task id through IActivityManager.getTasks(). -->
+    <uses-permission android:name="android.permission.REAL_GET_TASKS" />
+
+    <!-- Android 9 private ActivityManager stack APIs. Signature/privileged. -->
+    <uses-permission android:name="android.permission.MANAGE_ACTIVITY_STACKS" />
+
+    <!-- ActivityManagerService.moveStackToDisplay() checks this on Pie. -->
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+
+    <!-- InputManagerService requires this when injecting into another UID. -->
+    <uses-permission android:name="android.permission.INJECT_EVENTS" />
+
+    <!-- Watchdog re-attach calls IActivityManager.moveTaskToFront() on our own task. -->
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
+    <application
+        android:allowBackup="false"
+        android:hardwareAccelerated="true"
+        android:label="Stack Launcher POC"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|density|keyboard|keyboardHidden|navigation"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Optional: lets this POC act as a HOME launcher. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
